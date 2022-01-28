@@ -104,3 +104,56 @@ function display_reduce() {
   }, 0);
   document.getElementById("Result").innerHTML = map3;
 }
+
+//Array Element Box Insert
+
+function add() {
+  let inputField = document.getElementById("input-field").value;
+
+  if (inputField === "" || inputField === " " || inputField === null) {
+    alert("Please enter your task");
+  } else {
+    var button = document.getElementById("click"),
+      count = 0;
+    button.onclick = function () {
+      count += 1;
+      console.log(count);
+
+      let data = document.getElementById("list__group");
+      let div = document.createElement("div");
+
+      div.className = "main-div d-flex justify-content-between";
+      data.appendChild(div);
+
+      let input = document.createElement("input");
+
+      input.className = "form-control w-75 my-3";
+      input.value = inputField;
+      input.id = "second-input" + count;
+      var value = (document.getElementById(input.id).disabled = false);
+      console.log(input.id);
+      div.appendChild(input);
+
+      let edit_span = document.createElement("span");
+      edit_span.innerHTML = `<i class=' my-3 text-success  fa fa-edit'></i>`;
+      div.appendChild(edit_span);
+
+      let delete_span = document.createElement("span");
+      delete_span.innerHTML = `<i class=' my-3 text-danger fa fa-trash'></i>`;
+      div.appendChild(delete_span);
+
+      delete_span.addEventListener("click", (e) => {
+        data.removeChild(div);
+      });
+
+      edit_span.addEventListener("click", (e) => {
+        var value = (document.getElementById(input.id).disabled = true);
+        console.log(value);
+        edit_span.mousemove = handleChange;
+      });
+      function handleChange(e) {}
+    };
+  }
+
+  document.getElementById("input-field").value = "";
+}
