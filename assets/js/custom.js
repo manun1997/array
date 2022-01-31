@@ -165,7 +165,7 @@ function openNav() {
 
 // Close Nav Bars
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mySidenav").style.width = "50px";
 }
 
 //JSON DATA
