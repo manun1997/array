@@ -157,3 +157,53 @@ function add() {
 
   document.getElementById("input-field").value = "";
 }
+
+// Open Nav Bars
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+// Close Nav Bars
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+//JSON DATA
+
+function data_click() {
+  const data = [
+    { icon: "fa fa-home", value: "Min Konto" },
+    { icon: "fa fa-user-o", value: "Personlige oplysninger" },
+    { icon: "fa fa-credit-card", value: "Abonnementer" },
+    {
+      icon: "fa fa-circle-o",
+      value: "Skkerhed personlige oplysninger ",
+    },
+    { icon: "fa fa-lock", value: "Apptilladelsel" },
+    { icon: "fa fa-long-arrow-down", value: "Status for installation" },
+    { icon: "fa fa-cog", value: " Indstillinger" },
+  ];
+
+  let final_data = data.map((item, index) => {
+    //accessing Division
+    let data_details = document.getElementById("data_details");
+
+    //create anchor link
+    let data_details_a = document.createElement("a");
+    data_details_a.className = "d-flex field_font_size";
+
+    //create anchor link insiede span
+    let data_details_span = document.createElement("span");
+    data_details_span.className = "icon_space";
+    data_details_span.innerHTML = `<i class='icon_size ${item.icon}' aria-hidden='true'></i>`;
+    data_details_a.appendChild(data_details_span);
+
+    let second_span = document.createElement("span");
+    second_span.className = "span_p";
+    second_span.innerHTML = `${item.value}`;
+
+    data_details_a.appendChild(second_span);
+    data_details.appendChild(data_details_a);
+    console.log(data_details);
+  });
+}
