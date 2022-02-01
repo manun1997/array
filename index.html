@@ -24,45 +24,23 @@
     </nav>
 
     <div class="container">
-        <div class="container">
-            <div class="my-3">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="demo">Enter Array Elements</label>
-                        <input type="text" class="form-control" id="array" placeholder="Enter array"
-                            autocomplete="off" />
-                    </div>
 
-                    <button type="button" class="btn btn-primary btn_array mx-2 " onclick="inputarray();">Submit
-                    </button>
-                </div>
-                <div class="form-group">
-                    <label for="arraydata">Arraye Elements</label>
-                    <textarea class="form-control w-50" id="arraydata" rows="3" readonly></textarea>
-                </div>
+        <blockquote class="blockquote text-center">
+            <p class="mb-0">Json Data</p>
+            <footer class="blockquote-footer">To Displaying Json Data in HTML</footer>
+
+        </blockquote>
+
+        <div class="form-group">
+            <button type="button" class="btn btn-secondary" onclick="studentdata();">Student_Details
+            </button>
+
+            <div id="student_data">
 
             </div>
         </div>
+
         <hr />
-        <blockquote class="blockquote text-center">
-            <p class="mb-0">Array elements using Json.</p>
-            <footer class="blockquote-footer">Parse Element <cite title="Source Title">Object to string</cite></footer>
-        </blockquote>
-
-        <form>
-            <div class="form-group">
-                <label for="demo">Array Json Input Elements</label>
-                <textarea class="form-control w-50" id="jsondemo" rows="3" readonly></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="jsondemo">Json Elements</label>
-                <!-- <textarea class="form-control w-50" id="jsondemo" rows="3" readonly></textarea> -->
-                <textarea class="form-control w-50" id="jsondemo1" rows="3" readonly></textarea>
-            </div>
-            <button type="button" class="btn btn-secondary" onclick="jsondata()">Click to know Jsondata</button>
-        </form>
-
         <blockquote class="blockquote text-center">
             <p class="mb-0">Map.</p>
             <footer class="blockquote-footer">Map the array of element to newly created array </footer>
@@ -99,9 +77,9 @@
 
 
         <hr />
+
+
     </div>
-
-
 
     <script src="assets/js/jquery.slim.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>

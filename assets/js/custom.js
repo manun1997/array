@@ -113,59 +113,63 @@ function add() {
   if (inputField === "" || inputField === " " || inputField === null) {
     alert("Please enter your task");
   } else {
-    var button = document.getElementById("click"),
-      count = 0;
-    button.onclick = function () {
-      count += 1;
-      console.log(count);
+    let data = document.getElementById("list__group");
+    let div = document.createElement("div");
 
-      let data = document.getElementById("list__group");
-      let div = document.createElement("div");
+    div.className = "main-div d-flex justify-content-between";
+    data.appendChild(div);
 
-      div.className = "main-div d-flex justify-content-between";
-      data.appendChild(div);
+    let input = document.createElement("input");
+    input.className = "form-control w-75 my-3";
+    input.value = inputField;
+    input.id = input.value;
+    div.appendChild(input);
+    console.log(input.id);
 
-      let input = document.createElement("input");
+    let edit_span = document.createElement("span");
+    edit_span.innerHTML = `<i class=' my-3 text-success  fa fa-edit'></i>`;
+    var value = (document.getElementById(input.id).disabled = true);
+    div.appendChild(edit_span);
 
-      input.className = "form-control w-75 my-3";
-      input.value = inputField;
-      input.id = "second-input" + count;
-      var value = (document.getElementById(input.id).disabled = false);
-      console.log(input.id);
-      div.appendChild(input);
+    let delete_span = document.createElement("span");
+    delete_span.innerHTML = `<i class=' my-3 text-danger  fa fa-trash'></i>`;
+    div.appendChild(delete_span);
 
-      let edit_span = document.createElement("span");
-      edit_span.innerHTML = `<i class=' my-3 text-success  fa fa-edit'></i>`;
-      div.appendChild(edit_span);
+    delete_span.addEventListener("click", (e) => {
+      div.removeChild(delete_span);
+      div.removeChild(edit_span);
+      div.removeChild(input);
+    });
 
-      let delete_span = document.createElement("span");
-      delete_span.innerHTML = `<i class=' my-3 text-danger fa fa-trash'></i>`;
-      div.appendChild(delete_span);
+    edit_span.addEventListener("click", (e) => {
+      document.getElementById(input.id).disabled = false;
+      let data = document.getElementById(input.id).value;
+    });
 
-      delete_span.addEventListener("click", (e) => {
-        data.removeChild(div);
-      });
+    input.addEventListener("mouseout", (e) => {
+      document.getElementById(input.id).disabled = true;
+    });
 
-      edit_span.addEventListener("click", (e) => {
-        var value = (document.getElementById(input.id).disabled = true);
-        console.log(value);
-        edit_span.mousemove = handleChange;
-      });
-      function handleChange(e) {}
-    };
+    document.getElementById(input.id).disabled = true;
+    document.getElementById("input-field").value = "";
   }
-
-  document.getElementById("input-field").value = "";
 }
 
 // Open Nav Bars
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("mySidenav").style.width = " 250px";
 }
 
 // Close Nav Bars
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "50px";
+function closeNav(x) {
+  console.log("closeNav", x.target.id);
+  if ((x.target.id = "left")) {
+    document.getElementById("mySidenav").style.width = "50px";
+    // x.classList.toggle("fa-angle-right");
+    x.target.id = "right";
+  }
+
+  console.log(x.target.id);
 }
 
 //JSON DATA
@@ -206,4 +210,49 @@ function data_click() {
     data_details.appendChild(data_details_a);
     console.log(data_details);
   });
+}
+
+//jsondata
+
+const students = [
+  {
+    Student_Image: "assets/images/studen_2.jpg",
+    Student_Name: "Manu",
+    Student_Roll: "325cs13031",
+    Student_Id: "ID2021",
+    Student_Address: "Mysore",
+  },
+];
+
+console.log(students);
+
+function studentdata() {
+  let const_student = `<div class="card mb-3 my-3" style="max-width: 800px;">
+<div class="card-header text-center">
+    Student Details
+</div>
+<div class="row no-gutters">
+    <div class="col-md-4">
+       <img src='${students[0].Student_Image}' alt='user'>
+    </div>
+    <div class="col-md-8">
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span class="font-weight-bold">Student Name :  ${students[0].Student_Name}</span>
+                </li>
+                <li class="list-group-item"><span class="font-weight-bold">Student Roll : ${students[0].Student_Roll}</span>
+                    </li>
+                <li class="list-group-item"><span class="font-weight-bold">Student Id : ${students[0].Student_Id}</span>
+                </li>
+                <li class="list-group-item"><span class="font-weight-bold">Student address : ${students[0].Student_Address}</span>
+                     </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+</div>`;
+
+  console.log(const_student);
+  document.getElementById("student_data").innerHTML = const_student;
 }

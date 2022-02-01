@@ -27,8 +27,18 @@
 
 
     <div id="mySidenav" class="sidenav">
-        <a role="button" href="javascript:void(0)" class="closebtn " onclick="closeNav()"><i
-                class="icon_1 fa fa-angle-left" aria-hidden="true"></i></a>
+
+        <div id="closediv">
+            <a role="button" href="javascript:void(0)" class="closebtn"><i id="left" class="icon fa fa-angle-left"
+                    onclick="closeNav(event);" aria-hidden="true"></i></a>
+        </div>
+        <!-- <div id="opendiv">
+            <a role="button" href="javascript:void(0)" id="openbtn" class="openbtn"><i class="fa fa-angle-right"
+                    onclick="openNav(this);" aria-hidden="true"></i></a>
+        </div> -->
+
+
+
         <div id="data_details">
 
         </div>
