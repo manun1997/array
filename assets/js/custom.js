@@ -222,9 +222,128 @@ const students = [
     Student_Id: "ID2021",
     Student_Address: "Mysore",
   },
+
+  {
+    Student_Image: "assets/images/user1.jpg",
+    Student_Name: "Kiran",
+    Student_Roll: "325cs13032",
+    Student_Id: "ID2022",
+    Student_Address: "Chanmaraj Nagar",
+  },
+  {
+    Student_Image: "assets/images/user3.jpg",
+    Student_Name: "Yashwanth",
+    Student_Roll: "325cs13051",
+    Student_Id: "ID2023",
+    Student_Address: "Mandya",
+  },
+  {
+    Student_Image: "assets/images/user4.jpg",
+    Student_Name: "Raaju",
+    Student_Roll: "325cs13067",
+    Student_Id: "ID2024",
+    Student_Address: "Thumkur",
+  },
+  {
+    Student_Image: "assets/images/user5.jpg",
+    Student_Name: "Pavan",
+    Student_Roll: "325cs13054",
+    Student_Id: "ID2024",
+    Student_Address: "Banglore",
+  },
+  {
+    Student_Image: "assets/images/user6.jpg",
+    Student_Name: "Prakash",
+    Student_Roll: "325cs13037",
+    Student_Id: "ID2030",
+    Student_Address: "Belgam",
+  },
 ];
 
 console.log(students);
+
+function studentdata1() {
+  let student_data = students.map((item, index) => {
+    let student_details = document.getElementById("student_data");
+
+    let div_card = document.createElement("div");
+    div_card.className = "card mb-3 my-3 mr-3";
+    div_card.style = "max-width: 800px";
+
+    student_details.appendChild(div_card);
+
+    let card_inside_div = document.createElement("div");
+    card_inside_div.className = "font-weight-bold card-header text-center";
+    card_inside_div.innerText = " Student Details";
+    div_card.appendChild(card_inside_div);
+
+    let row_div = document.createElement("div");
+    row_div.className = "row no-gutters";
+    div_card.appendChild(row_div);
+
+    let col_div = document.createElement("div");
+    col_div.className = " col-md-4";
+    row_div.appendChild(col_div);
+
+    let img_data = document.createElement("img");
+    img_data.className = "img_data img-fluid";
+    img_data.src = item.Student_Image;
+
+    img_data.alt = "user";
+    col_div.appendChild(img_data);
+
+    let col_div_data = document.createElement("div");
+    col_div_data.className = "col-md-8";
+    row_div.appendChild(col_div_data);
+
+    let card_body_data = document.createElement("div");
+    card_body_data.className = "card-body";
+
+    col_div_data.appendChild(card_body_data);
+
+    let card_ul_data = document.createElement("ul");
+    card_ul_data.className = "list-group list-group-flush ";
+    card_body_data.appendChild(card_ul_data);
+
+    let card_body_li_name = document.createElement("li");
+    card_body_li_name.className = "list-group-item";
+    card_ul_data.appendChild(card_body_li_name);
+
+    let span_data = document.createElement("span");
+    span_data.className = "font-weight-bold";
+    span_data.innerHTML = `Name: ${item.Student_Name}`;
+    card_body_li_name.appendChild(span_data);
+
+    let card_body_li_roll = document.createElement("li");
+    card_body_li_roll.className = "list-group-item";
+    card_ul_data.appendChild(card_body_li_roll);
+
+    let span_data_roll = document.createElement("span");
+    span_data_roll.className = "font-weight-bold";
+    span_data_roll.innerHTML = `Roll_no: ${item.Student_Roll}`;
+    card_body_li_roll.appendChild(span_data_roll);
+
+    let card_body_li_id = document.createElement("li");
+    card_body_li_id.className = "list-group-item";
+    card_ul_data.appendChild(card_body_li_id);
+
+    let span_data_id = document.createElement("span");
+    span_data_id.className = "font-weight-bold";
+    span_data_id.innerHTML = `Id: ${item.Student_Id}`;
+    card_body_li_id.appendChild(span_data_id);
+
+    let card_body_li_address = document.createElement("li");
+    card_body_li_address.className = "list-group-item";
+    card_ul_data.appendChild(card_body_li_address);
+
+    let span_data_address = document.createElement("span");
+    span_data_address.className = "font-weight-bold";
+    span_data_address.innerHTML = `Address: ${item.Student_Address}`;
+    card_body_li_address.appendChild(span_data_address);
+
+    console.log(student_details);
+  });
+}
 
 function studentdata() {
   let const_student = `<div class="card mb-3 my-3" style="max-width: 800px;">
