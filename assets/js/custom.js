@@ -1,3 +1,33 @@
+// Form Validation Start
+
+(function () {
+  "use strict";
+  window.addEventListener(
+    "load",
+    function () {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName("needs-validation");
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    },
+    false
+  );
+})();
+
+//Form Validation End
+
 function inputarray() {
   let outputarray = [] + document.getElementById("array").value;
   document.getElementById("arraydata").innerHTML =
@@ -158,16 +188,21 @@ function add() {
 // Open Nav Bars
 function openNav() {
   document.getElementById("mySidenav").style.width = " 250px";
+  document.getElementById("main_form").style.marginLeft = "260px";
+  document.getElementById("mySidenav").style.marginTop = "0px";
 }
 
 // Close Nav Bars
 function togglefun(x) {
   if (x.target.id == "left") {
     document.getElementById("mySidenav").style.width = "50px";
+    document.getElementById("main_form").style.marginLeft = "65px";
+
     x.target.className = "fa fa-angle-right";
     x.target.id = "right";
   } else {
     document.getElementById("mySidenav").style.width = " 250px";
+    document.getElementById("main_form").style.marginLeft = "265px";
     x.target.id = "left";
     x.target.className = "fa fa-angle-left";
   }
@@ -183,7 +218,7 @@ function closeNav(x) {
 function data_click(x) {
   const data = [
     { icon: "fa fa-home", value: "Min Konto" },
-    { icon: "fa fa-user-o", value: "Personlige oplysninger" },
+    { icon: "fa fa-user-o", value: "Account" },
     { icon: "fa fa-credit-card", value: "Abonnementer" },
     {
       icon: "fa fa-circle-o",
@@ -209,13 +244,17 @@ function data_click(x) {
     data_details_a.appendChild(data_details_span);
 
     let second_span = document.createElement("span");
-    second_span.className = "span_p";
+    second_span.className = "justify-content-sm-start span_p";
     second_span.innerHTML = `${item.value}`;
-
+    second_span.id = item.value;
+    console.log(second_span.innerHTML);
     let data_id = document.getElementById("left");
 
     data_id.addEventListener("click", (e) => {
       let class_data = data_id.className;
+
+      console.log(second_span.id);
+
       if (class_data == "fa fa-angle-left") {
         second_span.innerHTML = `${item.value}`;
       } else {
@@ -356,3 +395,8 @@ function studentdata1() {
     card_body_li_address.appendChild(span_data_address);
   });
 }
+
+var loadFile1 = function (event) {
+  var image = document.getElementById("output1");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};

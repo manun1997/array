@@ -231,3 +231,25 @@ select {
   height: 100%;
   object-fit: cover;
 }
+
+/* Form Design  */
+.btn_submit {
+  margin: 32px 0px 0px 0px;
+  width: 100%;
+}
+.img_css {
+  width: 250px;
+  height: 250px;
+}
+.form_div {
+  margin: 75px 0px 0px 0px;
+}
+.image_pos {
+  font-size: 24px;
+  color: gray;
+}
+
+.card_data {
+  position: absolute;
+  bottom: -10px;
+}
