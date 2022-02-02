@@ -356,7 +356,5 @@ function studentdata1() {
     span_data_address.className = "font-weight-bold";
     span_data_address.innerHTML = `Address: ${item.Student_Address}`;
     card_body_li_address.appendChild(span_data_address);
-
-    console.log(student_details);
   });
 }
