@@ -161,15 +161,20 @@ function openNav() {
 }
 
 // Close Nav Bars
-function closeNav(x) {
-  console.log("closeNav", x.target.id);
-  if ((x.target.id = "left")) {
+function togglefun(x) {
+  if (x.target.id == "left") {
     document.getElementById("mySidenav").style.width = "50px";
-    // x.classList.toggle("fa-angle-right");
+    x.target.className = "fa fa-angle-right";
     x.target.id = "right";
+  } else {
+    document.getElementById("mySidenav").style.width = " 250px";
+    x.target.id = "left";
+    x.target.className = "fa fa-angle-left";
   }
+}
 
-  console.log(x.target.id);
+function closeNav(x) {
+  document.getElementById("mySidenav").style.width = "50px";
 }
 
 //JSON DATA
@@ -224,7 +229,7 @@ const students = [
   },
 
   {
-    Student_Image: "assets/images/user1.jpg",
+    Student_Image: "assets/images/user7.jpg",
     Student_Name: "Kiran",
     Student_Roll: "325cs13032",
     Student_Id: "ID2022",
@@ -286,7 +291,7 @@ function studentdata1() {
     row_div.appendChild(col_div);
 
     let img_data = document.createElement("img");
-    img_data.className = "img_data img-fluid";
+    img_data.className = "img_data img-thumbnail";
     img_data.src = item.Student_Image;
 
     img_data.alt = "user";
@@ -343,35 +348,4 @@ function studentdata1() {
 
     console.log(student_details);
   });
-}
-
-function studentdata() {
-  let const_student = `<div class="card mb-3 my-3" style="max-width: 800px;">
-<div class="card-header text-center">
-    Student Details
-</div>
-<div class="row no-gutters">
-    <div class="col-md-4">
-       <img src='${students[0].Student_Image}' alt='user'>
-    </div>
-    <div class="col-md-8">
-        <div class="card-body">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><span class="font-weight-bold">Student Name :  ${students[0].Student_Name}</span>
-                </li>
-                <li class="list-group-item"><span class="font-weight-bold">Student Roll : ${students[0].Student_Roll}</span>
-                    </li>
-                <li class="list-group-item"><span class="font-weight-bold">Student Id : ${students[0].Student_Id}</span>
-                </li>
-                <li class="list-group-item"><span class="font-weight-bold">Student address : ${students[0].Student_Address}</span>
-                     </li>
-            </ul>
-
-        </div>
-    </div>
-</div>
-</div>`;
-
-  console.log(const_student);
-  document.getElementById("student_data").innerHTML = const_student;
 }
