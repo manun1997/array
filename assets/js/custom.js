@@ -276,8 +276,6 @@ const students = [
   },
 ];
 
-console.log(students);
-
 function studentdata1() {
   let student_data = students.map((item, index) => {
     let student_details = document.getElementById("student_data");
