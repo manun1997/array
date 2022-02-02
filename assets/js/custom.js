@@ -166,6 +166,7 @@ function togglefun(x) {
     document.getElementById("mySidenav").style.width = "50px";
     x.target.className = "fa fa-angle-right";
     x.target.id = "right";
+    console.log(x.target.id);
   } else {
     document.getElementById("mySidenav").style.width = " 250px";
     x.target.id = "left";
@@ -175,11 +176,12 @@ function togglefun(x) {
 
 function closeNav(x) {
   document.getElementById("mySidenav").style.width = "50px";
+  document.getElementsByClassName("span_p").style.display = "none";
 }
 
 //JSON DATA
 
-function data_click() {
+function data_click(x) {
   const data = [
     { icon: "fa fa-home", value: "Min Konto" },
     { icon: "fa fa-user-o", value: "Personlige oplysninger" },
@@ -211,9 +213,20 @@ function data_click() {
     second_span.className = "span_p";
     second_span.innerHTML = `${item.value}`;
 
+    let data_id = document.getElementById("left");
+
+    data_id.addEventListener("click", (e) => {
+      console.log(data_id.className);
+      let class_data = data_id.className;
+      if (class_data == "fa fa-angle-right") {
+        second_span.innerHTML = "";
+      } else {
+        second_span.innerHTML = `${item.value}`;
+      }
+    });
+
     data_details_a.appendChild(second_span);
     data_details.appendChild(data_details_a);
-    console.log(data_details);
   });
 }
 
