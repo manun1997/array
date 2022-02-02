@@ -166,7 +166,6 @@ function togglefun(x) {
     document.getElementById("mySidenav").style.width = "50px";
     x.target.className = "fa fa-angle-right";
     x.target.id = "right";
-    console.log(x.target.id);
   } else {
     document.getElementById("mySidenav").style.width = " 250px";
     x.target.id = "left";
@@ -216,12 +215,11 @@ function data_click(x) {
     let data_id = document.getElementById("left");
 
     data_id.addEventListener("click", (e) => {
-      console.log(data_id.className);
       let class_data = data_id.className;
-      if (class_data == "fa fa-angle-right") {
-        second_span.innerHTML = "";
-      } else {
+      if (class_data == "fa fa-angle-left") {
         second_span.innerHTML = `${item.value}`;
+      } else {
+        second_span.innerHTML = "";
       }
     });
 
