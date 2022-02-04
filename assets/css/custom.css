@@ -253,3 +253,85 @@ select {
   position: absolute;
   bottom: -10px;
 }
+
+/* Slicker side bar css */
+.body_data {
+  background: linear-gradient(to top right, #c8d2f5, rgb(248, 248, 227));
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.card_data_img {
+  height: 30%;
+  object-fit: contain;
+}
+
+.first_word_underline {
+  border-bottom: 8px salmon;
+}
+
+.card_title_css {
+  font-family: "Bebas Neue", cursive;
+  color: #919191;
+}
+.card_body_css {
+  padding: 14px 14px 0px 14px;
+}
+.img_rounded {
+  border-radius: 15px;
+  height: 230px;
+  width: 220px;
+  object-fit: cover;
+  align-items: center;
+  box-shadow: 0px 10px 25px 0px grey;
+  position: relative;
+}
+.card_title_css {
+  margin: 0px 0px -15px 0px;
+}
+.card_title2_css {
+  font-family: "Bebas Neue", cursive;
+  font-family: "Cabin", sans-serif;
+  font-family: "Mulish", sans-serif;
+  color: rgb(63, 61, 61);
+  font-weight: bold;
+  font-size: 18px;
+}
+.headding_css {
+  font-family: "Bebas Neue", cursive;
+  font-family: "Cabin", sans-serif;
+  font-family: "Mulish", sans-serif;
+}
+.card_title_css::first-letter {
+  border-bottom: 5px solid #ef789b;
+}
+/* .span_underline {
+  visibility: hidden;
+  border-bottom: 2px solid black;
+  text-decoration: underline;
+} */
+
+.card_deck_data {
+  border-radius: 10px;
+  position: relative;
+  width: 18rem !important;
+  height: 28rem;
+  display: inline-block;
+}
+
+.footer_icons {
+  margin: 0px 10px 0px 10px;
+  font-size: 18px;
+  border: none;
+}
+
+.card_slick {
+  margin: 0px;
+}
+
+.slick-slide {
+  width: 300px;
+}
+
+.slick-arrow {
+  display: none !important;
+}

@@ -189,7 +189,14 @@ function add() {
 function openNav() {
   document.getElementById("mySidenav").style.width = " 250px";
   document.getElementById("main_form").style.marginLeft = "260px";
+  document.getElementById("ranking_list").style.marginLeft = "265px";
   document.getElementById("mySidenav").style.marginTop = "0px";
+  document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
+
+  document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
+  document.getElementById("icon1").style.margin = "0px 0px 0px 0px ";
+  document.getElementById("icon2").style.margin = "0px 0px 0px 0px ";
+  document.getElementById("icon3").style.margin = "0px 0px 0px 0px ";
 }
 
 // Close Nav Bars
@@ -197,12 +204,20 @@ function togglefun(x) {
   if (x.target.id == "left") {
     document.getElementById("mySidenav").style.width = "50px";
     document.getElementById("main_form").style.marginLeft = "65px";
+    document.getElementById("ranking_list").style.marginLeft = "65px";
+
+    document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
+    document.getElementById("icon1").style.margin = "0px 0px 0px 0px ";
+    document.getElementById("icon2").style.margin = "0px 0px 0px 0px ";
+    document.getElementById("icon3").style.margin = "0px 0px 0px 0px ";
 
     x.target.className = "fa fa-angle-right";
     x.target.id = "right";
   } else {
     document.getElementById("mySidenav").style.width = " 250px";
     document.getElementById("main_form").style.marginLeft = "265px";
+    document.getElementById("ranking_list").style.marginLeft = "265px";
+
     x.target.id = "left";
     x.target.className = "fa fa-angle-left";
   }
@@ -216,6 +231,12 @@ function closeNav(x) {
 //JSON DATA
 
 function data_click(x) {
+  document.getElementById("main_form").style.display = "none";
+
+  document.getElementById("img").style.width = "250px";
+  document.getElementById("img1").style.width = "250px";
+  document.getElementById("img2").style.width = "250px";
+  document.getElementById("img3").style.width = "250px";
   const data = [
     { icon: "fa fa-home", value: "Min Konto" },
     { icon: "fa fa-user-o", value: "Account" },
@@ -243,17 +264,28 @@ function data_click(x) {
     data_details_span.innerHTML = `<i class='icon_size ${item.icon}' aria-hidden='true'></i>`;
     data_details_a.appendChild(data_details_span);
 
+    data_details_span.addEventListener("click", (e) => {
+      icon_data = item.icon;
+
+      console.log(icon_data);
+      if (item.icon == "fa fa-user-o") {
+        document.getElementById("main_form").style.display = "block";
+      } else {
+        document.getElementById("main_form").style.display = "none";
+      }
+    });
+
     let second_span = document.createElement("span");
     second_span.className = "justify-content-sm-start span_p";
     second_span.innerHTML = `${item.value}`;
     second_span.id = item.value;
-    console.log(second_span.innerHTML);
+
     let data_id = document.getElementById("left");
 
     data_id.addEventListener("click", (e) => {
       let class_data = data_id.className;
 
-      console.log(second_span.id);
+      console.log(class_data);
 
       if (class_data == "fa fa-angle-left") {
         second_span.innerHTML = `${item.value}`;
@@ -265,6 +297,14 @@ function data_click(x) {
     data_details_a.appendChild(second_span);
     data_details.appendChild(data_details_a);
   });
+
+  var event = new Date();
+  var options = { day: "numeric", month: "short", weekday: "long" };
+  let data_format = event.toLocaleDateString("en-US", options);
+  document.getElementById("Date_format").innerHTML = data_format;
+  // document.write(dayName);
+  // // var newDate = new Date(Date.now() + days);
+  // document.write(newDate);
 }
 
 //jsondata
@@ -400,3 +440,50 @@ var loadFile1 = function (event) {
   var image = document.getElementById("output1");
   image.src = URL.createObjectURL(event.target.files[0]);
 };
+
+// ------------------------------------------------------
+
+// $(".card_slick").slick({
+//   slidesToShow: 3,
+//   slidesToScroll: 1,
+//   autoplay: true,
+//   autoplaySpeed: 2000,
+// });
+
+$(".card_slick").slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ],
+});
+
+// ------------------------------------------------------------
