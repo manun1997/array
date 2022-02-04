@@ -220,6 +220,7 @@ select {
   right: 25px;
   font-size: 25px;
   margin-left: 50px;
+  margin-bottom: 15px;
 }
 
 .data_group {
@@ -258,7 +259,6 @@ select {
 .body_data {
   background: linear-gradient(to top right, #c8d2f5, rgb(248, 248, 227));
   background-repeat: no-repeat;
-  height: 100vh;
 }
 .card_data_img {
   height: 30%;

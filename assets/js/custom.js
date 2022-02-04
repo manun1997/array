@@ -191,12 +191,12 @@ function openNav() {
   document.getElementById("main_form").style.marginLeft = "260px";
   document.getElementById("ranking_list").style.marginLeft = "265px";
   document.getElementById("mySidenav").style.marginTop = "0px";
-  document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
+  // document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
 
-  document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
-  document.getElementById("icon1").style.margin = "0px 0px 0px 0px ";
-  document.getElementById("icon2").style.margin = "0px 0px 0px 0px ";
-  document.getElementById("icon3").style.margin = "0px 0px 0px 0px ";
+  // document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
+  // document.getElementById("icon1").style.margin = "0px 0px 0px 0px ";
+  // document.getElementById("icon2").style.margin = "0px 0px 0px 0px ";
+  // document.getElementById("icon3").style.margin = "0px 0px 0px 0px ";
 }
 
 // Close Nav Bars
@@ -206,10 +206,10 @@ function togglefun(x) {
     document.getElementById("main_form").style.marginLeft = "65px";
     document.getElementById("ranking_list").style.marginLeft = "65px";
 
-    document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
-    document.getElementById("icon1").style.margin = "0px 0px 0px 0px ";
-    document.getElementById("icon2").style.margin = "0px 0px 0px 0px ";
-    document.getElementById("icon3").style.margin = "0px 0px 0px 0px ";
+    // document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
+    // document.getElementById("icon1").style.margin = "0px 0px 0px 0px ";
+    // document.getElementById("icon2").style.margin = "0px 0px 0px 0px ";
+    // document.getElementById("icon3").style.margin = "0px 0px 0px 0px ";
 
     x.target.className = "fa fa-angle-right";
     x.target.id = "right";
@@ -232,11 +232,11 @@ function closeNav(x) {
 
 function data_click(x) {
   document.getElementById("main_form").style.display = "none";
-
-  document.getElementById("img").style.width = "250px";
-  document.getElementById("img1").style.width = "250px";
-  document.getElementById("img2").style.width = "250px";
-  document.getElementById("img3").style.width = "250px";
+  // // document.getElementById("ranking_list").style.display = "none";
+  // document.getElementById("img").style.width = "250px";
+  // document.getElementById("img1").style.width = "250px";
+  // document.getElementById("img2").style.width = "250px";
+  // document.getElementById("img3").style.width = "250px";
   const data = [
     { icon: "fa fa-home", value: "Min Konto" },
     { icon: "fa fa-user-o", value: "Account" },
@@ -261,17 +261,153 @@ function data_click(x) {
     //create anchor link insiede span
     let data_details_span = document.createElement("span");
     data_details_span.className = "icon_space";
+    data_details_span.id = item.value;
     data_details_span.innerHTML = `<i class='icon_size ${item.icon}' aria-hidden='true'></i>`;
     data_details_a.appendChild(data_details_span);
 
     data_details_span.addEventListener("click", (e) => {
       icon_data = item.icon;
-
-      console.log(icon_data);
       if (item.icon == "fa fa-user-o") {
         document.getElementById("main_form").style.display = "block";
       } else {
         document.getElementById("main_form").style.display = "none";
+      }
+
+      if (item.icon == "fa fa-credit-card") {
+        let icon_name = item.icon;
+        console.log("clicked");
+
+        let card_rank_data = [
+          {
+            card_number: "01",
+            card_title: "Bubble pop",
+            card_person_name: "Kim hyun A",
+            card_person_image: "assets/images/user5.jpg",
+          },
+          {
+            card_number: "02",
+            card_title: "Love Me",
+            card_person_name: "Kim hyun A",
+            card_person_image: "assets/images/user4.jpg",
+          },
+          {
+            card_number: "03",
+            card_title: "Billy cullum",
+            card_person_name: "Kim hyun A",
+            card_person_image: "assets/images/user6.jpg",
+          },
+          {
+            card_number: "04",
+            card_title: "Candy Bar Creep",
+            card_person_name: "Kim hyun A",
+            card_person_image: "assets/images/user7.jpg",
+          },
+          {
+            card_number: "01",
+            card_title: "Bubble pop",
+            card_person_name: "Kim hyun A",
+            card_person_image: "assets/images/user5.jpg",
+          },
+          {
+            card_number: "02",
+            card_title: "Love Me",
+            card_person_name: "Kim hyun A",
+            card_person_image: "assets/images/user4.jpg",
+          },
+          {
+            card_number: "03",
+            card_title: "Billy cullum",
+            card_person_name: "Kim hyun A",
+            card_person_image: "assets/images/user6.jpg",
+          },
+          {
+            card_number: "04",
+            card_title: "Candy Bar Creep",
+            card_person_name: "Kim hyun A",
+            card_person_image: "assets/images/user7.jpg",
+          },
+        ];
+
+        var event = new Date();
+        var options = { day: "numeric", month: "short", weekday: "long" };
+        let data_format = event.toLocaleDateString("en-US", options);
+
+        let rank_data = document.getElementById("ranking_list");
+        rank_data.innerHTML = `<div class="form-row">
+        <div class="col">
+            <h3 class="headding_css mx-2 my-5">Ranking Lists</h3>
+        </div>
+        <div class="col">
+            <h3 class="headding_css mx-2 my-5 float-right" id='${data_format}'">${data_format}</h3>
+        </div>
+    </div>`;
+        let card_slick_data = document.createElement("div");
+        card_slick_data.className = "card_slick";
+        rank_data.appendChild(card_slick_data);
+
+        let rank_list_data_values = card_rank_data.map((item, index) => {
+          let card_slick = document.createElement("div");
+          card_slick.className = "card shadow bg-white px-3 card_deck_data";
+          card_slick.innerHTML = `<div class="card-body card_body_css">
+                  <h1 class="card-title card_title_css">01</h1>
+                  <h4 class="card-title card_title2_css mb-0 mt-5">${item.card_number}</h4>
+                  <p class="card-text pb-2">${item.card_title}</p>
+              </div>
+              <img src="${item.card_person_image}" id="img" class="card-img-bottom img_rounded mx-auto" alt="...">
+              <div class="card-footer border-0">
+                  <small class="text-muted">
+                      <span class="footer_icons" id="icon"><i class="fa fa-download"
+                              aria-hidden="true"></i></span>
+                      <span class="footer_icons" id="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                      <span class="footer_icons" id="icon"><i class="fa fa-share" aria-hidden="true"></i></span>
+                      <span class="footer_icons" id="icon"><i class="fa fa-ellipsis-h"
+                              aria-hidden="true"></i></span>
+                  </small>
+              </div>
+          </div>`;
+
+          card_slick_data.appendChild(card_slick);
+          //     rank_data.appendChild(card_slick_data);
+
+          //     let card_div = document.createElement("div");
+          //     card_div.className = "card shadow bg-white px-3 card_deck_data";
+
+          //     card_slick_data.appendChild(card_div);
+
+          //     let card_div_data = document.createElement("div");
+          //     card_div_data.className = "card-body card_body_css";
+
+          //     card_div_data.innerHTML = `  <h1 class="card-title card_title_css">${item.card_number}</h1>
+          //   <h4 class="card-title card_title2_css mb-0 mt-5">${item.card_title}</h4>
+          //   <p class="card-text pb-2">${item.card_person_name}</p>`;
+
+          //     card_div.appendChild(card_div_data);
+
+          //     let img_card = document.createElement("img");
+          //     img_card.className = "card-img-bottom img_rounded mx-auto";
+          //     img_card.alt = item.card_title;
+          //     img_card.src = item.card_person_image;
+
+          //     card_div.appendChild(img_card);
+
+          //     let card_footer_data = document.createElement("div");
+          //     card_footer_data.className = "card-footer border-0";
+          //     card_footer_data.innerHTML = `<small class="text-muted">
+          //     <span class="footer_icons" id="icon"><i class="fa fa-download"
+          //             aria-hidden="true"></i></span>
+          //     <span class="footer_icons" id="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
+          //     <span class="footer_icons" id="icon"><i class="fa fa-share" aria-hidden="true"></i></span>
+          //     <span class="footer_icons" id="icon"><i class="fa fa-ellipsis-h"
+          //             aria-hidden="true"></i></span>
+          // </small>`;
+          //     card_div.appendChild(card_footer_data);
+
+          console.log(rank_data);
+          //document.getElementById("ranking_list").style.display = "block";
+        });
+        // document.getElementById("ranking_list").style.display = "none";
+      } else {
+        console.log("no Updates");
       }
     });
 
@@ -297,14 +433,6 @@ function data_click(x) {
     data_details_a.appendChild(second_span);
     data_details.appendChild(data_details_a);
   });
-
-  var event = new Date();
-  var options = { day: "numeric", month: "short", weekday: "long" };
-  let data_format = event.toLocaleDateString("en-US", options);
-  document.getElementById("Date_format").innerHTML = data_format;
-  // document.write(dayName);
-  // // var newDate = new Date(Date.now() + days);
-  // document.write(newDate);
 }
 
 //jsondata
@@ -451,7 +579,7 @@ var loadFile1 = function (event) {
 // });
 
 $(".card_slick").slick({
-  dots: true,
+  slides: true,
   infinite: true,
   speed: 300,
   slidesToShow: 4,
@@ -463,7 +591,7 @@ $(".card_slick").slick({
         slidesToShow: 3,
         slidesToScroll: 3,
         infinite: true,
-        dots: true,
+        slides: true,
       },
     },
     {
