@@ -342,16 +342,16 @@ function data_click(x) {
         </div>
     </div>`;
         let card_slick_data = document.createElement("div");
-        card_slick_data.className = "card_slick";
+        card_slick_data.className = "card_slick ";
         rank_data.appendChild(card_slick_data);
 
         let rank_list_data_values = card_rank_data.map((item, index) => {
           let card_slick = document.createElement("div");
           card_slick.className = "card shadow bg-white px-3 card_deck_data";
           card_slick.innerHTML = `<div class="card-body card_body_css">
-                  <h1 class="card-title card_title_css">01</h1>
-                  <h4 class="card-title card_title2_css mb-0 mt-5">${item.card_number}</h4>
-                  <p class="card-text pb-2">${item.card_title}</p>
+                  <h1 class="card-title card_title_css">${item.card_number}</h1>
+                  <h4 class="card-title card_title2_css mb-0 mt-5">${item.card_title}</h4>
+                  <p class="card-text pb-2">${item.card_person_name}</p>
               </div>
               <img src="${item.card_person_image}" id="img" class="card-img-bottom img_rounded mx-auto" alt="...">
               <div class="card-footer border-0">
@@ -367,45 +367,10 @@ function data_click(x) {
           </div>`;
 
           card_slick_data.appendChild(card_slick);
-          //     rank_data.appendChild(card_slick_data);
-
-          //     let card_div = document.createElement("div");
-          //     card_div.className = "card shadow bg-white px-3 card_deck_data";
-
-          //     card_slick_data.appendChild(card_div);
-
-          //     let card_div_data = document.createElement("div");
-          //     card_div_data.className = "card-body card_body_css";
-
-          //     card_div_data.innerHTML = `  <h1 class="card-title card_title_css">${item.card_number}</h1>
-          //   <h4 class="card-title card_title2_css mb-0 mt-5">${item.card_title}</h4>
-          //   <p class="card-text pb-2">${item.card_person_name}</p>`;
-
-          //     card_div.appendChild(card_div_data);
-
-          //     let img_card = document.createElement("img");
-          //     img_card.className = "card-img-bottom img_rounded mx-auto";
-          //     img_card.alt = item.card_title;
-          //     img_card.src = item.card_person_image;
-
-          //     card_div.appendChild(img_card);
-
-          //     let card_footer_data = document.createElement("div");
-          //     card_footer_data.className = "card-footer border-0";
-          //     card_footer_data.innerHTML = `<small class="text-muted">
-          //     <span class="footer_icons" id="icon"><i class="fa fa-download"
-          //             aria-hidden="true"></i></span>
-          //     <span class="footer_icons" id="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
-          //     <span class="footer_icons" id="icon"><i class="fa fa-share" aria-hidden="true"></i></span>
-          //     <span class="footer_icons" id="icon"><i class="fa fa-ellipsis-h"
-          //             aria-hidden="true"></i></span>
-          // </small>`;
-          //     card_div.appendChild(card_footer_data);
-
-          console.log(rank_data);
-          //document.getElementById("ranking_list").style.display = "block";
         });
-        // document.getElementById("ranking_list").style.display = "none";
+        sliderInit();
+
+        console.log(rank_data);
       } else {
         console.log("no Updates");
       }
@@ -569,49 +534,49 @@ var loadFile1 = function (event) {
   image.src = URL.createObjectURL(event.target.files[0]);
 };
 
-// ------------------------------------------------------
-
-// $(".card_slick").slick({
-//   slidesToShow: 3,
-//   slidesToScroll: 1,
-//   autoplay: true,
-//   autoplaySpeed: 2000,
-// });
-
-$(".card_slick").slick({
-  slides: true,
-  infinite: true,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        slides: true,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ],
+$.ajax({
+  type: "get",
+  url: "/public//min_konto.html",
+  dataType: "script",
+  data: data_send,
+  success: function () {
+    sliderInit();
+  },
 });
 
-// ------------------------------------------------------------
+function sliderInit() {
+  $(".card_slick").slick({
+    slides: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          slides: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  });
+}
+
+sliderInit();
