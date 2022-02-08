@@ -334,3 +334,7 @@ select {
 .slick-arrow {
   display: none !important;
 }
+
+.headings_css {
+  margin: 60px 0px 0px 20px;
+}
