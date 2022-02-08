@@ -193,8 +193,8 @@ function openNav() {
 // Close Nav Bars
 function togglefun(x) {
   if (x.target.id == "left") {
-    document.getElementById("main_form1").style.width = "250px";
-    // document.getElementById("mySidenav").style.width = "50px";
+    // document.getElementById("main_form1").style.width = "250px";
+    document.getElementById("mySidenav").style.width = "50px";
     x.target.className = "fa fa-angle-right";
     x.target.id = "right";
   } else {
