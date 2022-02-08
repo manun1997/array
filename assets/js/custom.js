@@ -217,6 +217,8 @@ function closeNav(x) {
 //JSON DATA
 
 function data_click(x) {
+  document.getElementById("mySidenav").style.width = " 250px";
+  document.getElementById("main_div").style.marginLeft = "250px";
   const data = [
     { icon: "fa fa-home", value: "Min Konto", path: "min_konto.html" },
     { icon: "fa fa-user-o", value: "Account", path: "minkonto_form.html" },
