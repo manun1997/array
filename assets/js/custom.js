@@ -188,36 +188,17 @@ function add() {
 // Open Nav Bars
 function openNav() {
   document.getElementById("mySidenav").style.width = " 250px";
-  document.getElementById("main_form").style.marginLeft = "260px";
-  document.getElementById("ranking_list").style.marginLeft = "265px";
-  document.getElementById("mySidenav").style.marginTop = "0px";
-  // document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
-
-  // document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
-  // document.getElementById("icon1").style.margin = "0px 0px 0px 0px ";
-  // document.getElementById("icon2").style.margin = "0px 0px 0px 0px ";
-  // document.getElementById("icon3").style.margin = "0px 0px 0px 0px ";
 }
 
 // Close Nav Bars
 function togglefun(x) {
   if (x.target.id == "left") {
-    document.getElementById("mySidenav").style.width = "50px";
-    document.getElementById("main_form").style.marginLeft = "65px";
-    document.getElementById("ranking_list").style.marginLeft = "65px";
-
-    // document.getElementById("icon").style.margin = "0px 0px 0px 0px ";
-    // document.getElementById("icon1").style.margin = "0px 0px 0px 0px ";
-    // document.getElementById("icon2").style.margin = "0px 0px 0px 0px ";
-    // document.getElementById("icon3").style.margin = "0px 0px 0px 0px ";
-
+    document.getElementById("main_form1").style.width = "250px";
+    // document.getElementById("mySidenav").style.width = "50px";
     x.target.className = "fa fa-angle-right";
     x.target.id = "right";
   } else {
     document.getElementById("mySidenav").style.width = " 250px";
-    document.getElementById("main_form").style.marginLeft = "265px";
-    document.getElementById("ranking_list").style.marginLeft = "265px";
-
     x.target.id = "left";
     x.target.className = "fa fa-angle-left";
   }
@@ -225,29 +206,32 @@ function togglefun(x) {
 
 function closeNav(x) {
   document.getElementById("mySidenav").style.width = "50px";
-  document.getElementsByClassName("span_p").style.display = "none";
+  // document.getElementsByClassName("span_p").style.display = "none";
 }
 
 //JSON DATA
 
 function data_click(x) {
-  document.getElementById("main_form").style.display = "none";
-  // // document.getElementById("ranking_list").style.display = "none";
-  // document.getElementById("img").style.width = "250px";
-  // document.getElementById("img1").style.width = "250px";
-  // document.getElementById("img2").style.width = "250px";
-  // document.getElementById("img3").style.width = "250px";
   const data = [
-    { icon: "fa fa-home", value: "Min Konto" },
-    { icon: "fa fa-user-o", value: "Account" },
-    { icon: "fa fa-credit-card", value: "Abonnementer" },
+    { icon: "fa fa-home", value: "Min Konto", path: "min_konto.html" },
+    { icon: "fa fa-user-o", value: "Account", path: "minkonto_form.html" },
+    {
+      icon: "fa fa-credit-card",
+      value: "Abonnementer",
+      path: "minkonto_account.html",
+    },
     {
       icon: "fa fa-circle-o",
       value: "Skkerhed personlige oplysninger ",
+      path: "",
     },
-    { icon: "fa fa-lock", value: "Apptilladelsel" },
-    { icon: "fa fa-long-arrow-down", value: "Status for installation" },
-    { icon: "fa fa-cog", value: " Indstillinger" },
+    { icon: "fa fa-lock", value: "Apptilladelsel", path: "" },
+    {
+      icon: "fa fa-long-arrow-down",
+      value: "Status for installation",
+      path: "",
+    },
+    { icon: "fa fa-cog", value: " Indstillinger", path: "" },
   ];
 
   let final_data = data.map((item, index) => {
@@ -256,7 +240,9 @@ function data_click(x) {
 
     //create anchor link
     let data_details_a = document.createElement("a");
+
     data_details_a.className = "d-flex field_font_size";
+    data_details_a.href = item.path;
 
     //create anchor link insiede span
     let data_details_span = document.createElement("span");
@@ -268,7 +254,8 @@ function data_click(x) {
     data_details_span.addEventListener("click", (e) => {
       icon_data = item.icon;
       if (item.icon == "fa fa-user-o") {
-        document.getElementById("main_form").style.display = "block";
+        // document.getElementById("main_form").style.display = "block";
+        // document.getElementById("ranking_list").style.display = "none";
       } else {
         document.getElementById("main_form").style.display = "none";
       }
@@ -276,99 +263,8 @@ function data_click(x) {
       if (item.icon == "fa fa-credit-card") {
         let icon_name = item.icon;
         console.log("clicked");
-
-        let card_rank_data = [
-          {
-            card_number: "01",
-            card_title: "Bubble pop",
-            card_person_name: "Kim hyun A",
-            card_person_image: "assets/images/user5.jpg",
-          },
-          {
-            card_number: "02",
-            card_title: "Love Me",
-            card_person_name: "Kim hyun A",
-            card_person_image: "assets/images/user4.jpg",
-          },
-          {
-            card_number: "03",
-            card_title: "Billy cullum",
-            card_person_name: "Kim hyun A",
-            card_person_image: "assets/images/user6.jpg",
-          },
-          {
-            card_number: "04",
-            card_title: "Candy Bar Creep",
-            card_person_name: "Kim hyun A",
-            card_person_image: "assets/images/user7.jpg",
-          },
-          {
-            card_number: "01",
-            card_title: "Bubble pop",
-            card_person_name: "Kim hyun A",
-            card_person_image: "assets/images/user5.jpg",
-          },
-          {
-            card_number: "02",
-            card_title: "Love Me",
-            card_person_name: "Kim hyun A",
-            card_person_image: "assets/images/user4.jpg",
-          },
-          {
-            card_number: "03",
-            card_title: "Billy cullum",
-            card_person_name: "Kim hyun A",
-            card_person_image: "assets/images/user6.jpg",
-          },
-          {
-            card_number: "04",
-            card_title: "Candy Bar Creep",
-            card_person_name: "Kim hyun A",
-            card_person_image: "assets/images/user7.jpg",
-          },
-        ];
-
-        var event = new Date();
-        var options = { day: "numeric", month: "short", weekday: "long" };
-        let data_format = event.toLocaleDateString("en-US", options);
-
-        let rank_data = document.getElementById("ranking_list");
-        rank_data.innerHTML = `<div class="form-row">
-        <div class="col">
-            <h3 class="headding_css mx-2 my-5">Ranking Lists</h3>
-        </div>
-        <div class="col">
-            <h3 class="headding_css mx-2 my-5 float-right" id='${data_format}'">${data_format}</h3>
-        </div>
-    </div>`;
-        let card_slick_data = document.createElement("div");
-        card_slick_data.className = "card_slick ";
-        rank_data.appendChild(card_slick_data);
-
-        let rank_list_data_values = card_rank_data.map((item, index) => {
-          let card_slick = document.createElement("div");
-          card_slick.className = "card shadow bg-white px-3 card_deck_data";
-          card_slick.innerHTML = `<div class="card-body card_body_css">
-                  <h1 class="card-title card_title_css">${item.card_number}</h1>
-                  <h4 class="card-title card_title2_css mb-0 mt-5">${item.card_title}</h4>
-                  <p class="card-text pb-2">${item.card_person_name}</p>
-              </div>
-              <img src="${item.card_person_image}" id="img" class="card-img-bottom img_rounded mx-auto" alt="...">
-              <div class="card-footer border-0">
-                  <small class="text-muted">
-                      <span class="footer_icons" id="icon"><i class="fa fa-download"
-                              aria-hidden="true"></i></span>
-                      <span class="footer_icons" id="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
-                      <span class="footer_icons" id="icon"><i class="fa fa-share" aria-hidden="true"></i></span>
-                      <span class="footer_icons" id="icon"><i class="fa fa-ellipsis-h"
-                              aria-hidden="true"></i></span>
-                  </small>
-              </div>
-          </div>`;
-
-          card_slick_data.appendChild(card_slick);
-        });
-        sliderInit();
+        // document.getElementById("ranking_list").style.display = "block";
+        // document.getElementById("ranking_list").style.overflow = "hidden";
 
         console.log(rank_data);
       } else {
@@ -399,6 +295,99 @@ function data_click(x) {
     data_details.appendChild(data_details_a);
   });
 }
+
+let card_rank_data = [
+  {
+    card_number: "01",
+    card_title: "Bubble pop",
+    card_person_name: "Kim hyun A",
+    card_person_image: "assets/images/user5.jpg",
+  },
+  {
+    card_number: "02",
+    card_title: "Love Me",
+    card_person_name: "Kim hyun A",
+    card_person_image: "assets/images/user4.jpg",
+  },
+  {
+    card_number: "03",
+    card_title: "Billy cullum",
+    card_person_name: "Kim hyun A",
+    card_person_image: "assets/images/user6.jpg",
+  },
+  {
+    card_number: "04",
+    card_title: "Candy Bar Creep",
+    card_person_name: "Kim hyun A",
+    card_person_image: "assets/images/user7.jpg",
+  },
+  {
+    card_number: "05",
+    card_title: "Bubble pop",
+    card_person_name: "Kim hyun A",
+    card_person_image: "assets/images/user5.jpg",
+  },
+  {
+    card_number: "06",
+    card_title: "Love Me",
+    card_person_name: "Kim hyun A",
+    card_person_image: "assets/images/user4.jpg",
+  },
+  {
+    card_number: "07",
+    card_title: "Billy cullum",
+    card_person_name: "Kim hyun A",
+    card_person_image: "assets/images/user6.jpg",
+  },
+  {
+    card_number: "08  ",
+    card_title: "Candy Bar Creep",
+    card_person_name: "Kim hyun A",
+    card_person_image: "assets/images/user7.jpg",
+  },
+];
+
+var event = new Date();
+var options = { day: "numeric", month: "short", weekday: "long" };
+let data_format = event.toLocaleDateString("en-US", options);
+
+let rank_data = document.getElementById("ranking_list");
+rank_data.innerHTML = `<div class="form-row">
+<div class="col">
+    <h3 class="headding_css mx-2 my-5">Ranking Lists</h3>
+</div>
+<div class="col">
+    <h3 class="headding_css mx-2 my-5 float-right" id='${data_format}'">${data_format}</h3>
+</div>
+</div>`;
+let card_slick_data = document.createElement("div");
+card_slick_data.className = "card_slick ";
+rank_data.appendChild(card_slick_data);
+
+let rank_list_data_values = card_rank_data.map((item, index) => {
+  let card_slick = document.createElement("div");
+  card_slick.className = "card  shadow bg-white px-3 card_deck_data";
+  card_slick.innerHTML = `<div class="  card-body card_body_css">
+          <h1 class="card-title card_title_css">${item.card_number}</h1>
+          <h4 class="card-title card_title2_css mb-0 mt-5">${item.card_title}</h4>
+          <p class="card-text pb-2">${item.card_person_name}</p>
+      </div>
+      <img src="${item.card_person_image}" id="img" class="card-img-bottom img_rounded mx-auto" alt="...">
+      <div class="card-footer border-0">
+          <small class="text-muted">
+              <span class="footer_icons" id="icon"><i class="fa fa-download"
+                      aria-hidden="true"></i></span>
+              <span class="footer_icons" id="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
+              <span class="footer_icons" id="icon"><i class="fa fa-share" aria-hidden="true"></i></span>
+              <span class="footer_icons" id="icon"><i class="fa fa-ellipsis-h"
+                      aria-hidden="true"></i></span>
+          </small>
+      </div>
+  </div>`;
+
+  card_slick_data.appendChild(card_slick);
+});
+sliderInit();
 
 //jsondata
 
@@ -536,7 +525,7 @@ var loadFile1 = function (event) {
 
 $.ajax({
   type: "get",
-  url: "/public//min_konto.html",
+  url: "/public//mikonto_accout.html",
   dataType: "script",
   data: data_send,
   success: function () {
