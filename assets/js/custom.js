@@ -289,51 +289,59 @@ function data_click(x) {
 let card_rank_data = [
   {
     card_number: "01",
-    card_title: "Bubble pop",
+    card_title: "VVCE",
     card_person_name: "Kim hyun A",
     card_person_image: "assets/images/user5.jpg",
+    card_address: "Mysore",
   },
   {
     card_number: "02",
-    card_title: "Love Me",
+    card_title: "VVIT",
     card_person_name: "Kim hyun A",
     card_person_image: "assets/images/user4.jpg",
+    card_address: "Chamaraj Nagar",
   },
   {
     card_number: "03",
-    card_title: "Billy cullum",
+    card_title: "SIT",
     card_person_name: "Kim hyun A",
     card_person_image: "assets/images/user6.jpg",
+    card_address: "Davanagere",
   },
   {
     card_number: "04",
-    card_title: "Candy Bar Creep",
+    card_title: "JSS",
     card_person_name: "Kim hyun A",
     card_person_image: "assets/images/user7.jpg",
+    card_address: "Udupi",
   },
   {
     card_number: "05",
-    card_title: "Bubble pop",
+    card_title: "MIT",
     card_person_name: "Kim hyun A",
     card_person_image: "assets/images/user5.jpg",
+    card_address: "Ballari",
   },
   {
     card_number: "06",
-    card_title: "Love Me",
+    card_title: "PES",
     card_person_name: "Kim hyun A",
     card_person_image: "assets/images/user4.jpg",
+    card_address: "Bagalkote",
   },
   {
     card_number: "07",
-    card_title: "Billy cullum",
+    card_title: "ATME",
     card_person_name: "Kim hyun A",
     card_person_image: "assets/images/user6.jpg",
+    card_address: "Banglore",
   },
   {
     card_number: "08  ",
-    card_title: "Candy Bar Creep",
+    card_title: "CIT",
     card_person_name: "Kim hyun A",
     card_person_image: "assets/images/user7.jpg",
+    card_address: "Belguam",
   },
 ];
 
@@ -357,6 +365,7 @@ rank_data.appendChild(card_slick_data);
 let rank_list_data_values = card_rank_data.map((item, index) => {
   let card_slick = document.createElement("div");
   card_slick.className = "card  shadow bg-white px-3 card_deck_data";
+  card_slick.id = item.card_number;
   card_slick.innerHTML = `<div class="  card-body card_body_css">
           <h1 class="card-title card_title_css">${item.card_number}</h1>
           <h4 class="card-title card_title2_css mb-0 mt-5">${item.card_title}</h4>
@@ -375,11 +384,96 @@ let rank_list_data_values = card_rank_data.map((item, index) => {
       </div>
   </div>`;
 
+  card_slick.addEventListener("click", (e) => {
+    let data = document.getElementById("student_details_data");
+    // let card_data_student = document.createElement("div");
+    // card_data_student.className = "card";
+    // data.append(card_data_student);
+
+    localStorage.setItem("id", item.card_number);
+    localStorage.setItem("title", item.card_title);
+    localStorage.setItem("person_name", item.card_person_name);
+    localStorage.setItem("person_image", item.card_person_image);
+    localStorage.setItem("address", item.card_address);
+
+    let data_load = (window.location.href = "student_details.html");
+  });
   card_slick_data.appendChild(card_slick);
 });
 sliderInit();
 
+function datastore() {
+  let id = localStorage.getItem("id");
+  let title = localStorage.getItem("title");
+  let person_name = localStorage.getItem("person_name");
+  let person_image = localStorage.getItem("person_image");
+  let address = localStorage.getItem("address");
+
+  const data = (document.getElementById("student_details_data").innerHTML = `  
+  <div class="card shadow p-3 mb-5 bg-gray  student_card_css" style="max-width:100vh;">
+  <h3 class="card-title text-center shadow p-3 mb-5 bg-gray">Student Details  </h3>
+ 
+  <div class="form-row">
+  <div class="col-md-5 mb-3">
+      <div class="card image__card border-0">
+          <img src="${person_image}" id="output1" class=" justify-content-center img-thumbnail img_css"
+              alt="image one">     
+      </div>
+  </div>
+  <div class="col-md-7 mb-3 my-5">
+  <div class="form-row">
+        <div class="col-sm-6">
+          <h4 for="id" class="font-weight-bold" >Student Id </h4>
+       </div>
+       <div class="col-sm-6">
+       <h4 for="id">: <span class="mx-4">${id} <span></h4>
+      </div>
+  </div>
+  <div class="form-row my-3">
+        <div class="col-sm-6">
+          <h4 for="name"  class="font-weight-bold">Student Name</h4>
+       </div>
+       <div class="col-sm-6">
+          <h4 for="name">: <span class="mx-4">${person_name} <span></h4>
+      </div>
+  </div>
+
+  <div class="form-row my-3">
+      <div class="col-sm-6">
+        <h4 for="College"  class="font-weight-bold">College </h4>
+      </div>
+      <div class="col-sm-6">
+         <h4 for="College">: <span class="mx-4">${title} <span></h4>
+      </div>
+  </div>
+
+  <div class="form-row">
+        <div class="col-sm-6">
+          <h4 for="address"  class="font-weight-bold">Address </h4>
+       </div>
+       <div class="col-sm-6">
+       <h4 for="address">: <span class="mx-4">${address} <span></h4>
+      </div>
+  </div>
+
+ 
+  </div>
+     
+     
+</div>
+</div>`);
+}
+
 //jsondata
+$.ajax({
+  type: "get",
+  url: "/public//student_details.html",
+  dataType: "script",
+  data: data_send,
+  success: function () {
+    databind();
+  },
+});
 
 const students = [
   {
@@ -507,16 +601,6 @@ function studentdata1() {
     card_body_li_address.appendChild(span_data_address);
   });
 }
-
-$.ajax({
-  type: "get",
-  url: "/public//mikonto_accout.html",
-  dataType: "script",
-  data: data_send,
-  success: function () {
-    sliderInit();
-  },
-});
 
 function sliderInit() {
   $(".card_slick").slick({
