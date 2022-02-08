@@ -36,34 +36,34 @@ function inputarray() {
 
 //Arrray Using Map Function
 
-function jsondata() {
-  let obj =
-    '{"employees":[' +
-    '{"firstName":"Manu","lastName":"N" },' +
-    '{"firstName":"Manoj","lastName":"M" },' +
-    '{"firstName":"Yashwanth","lastName":"N" }]}';
+// function jsondata() {
+//   let obj =
+//     '{"employees":[' +
+//     '{"firstName":"Manu","lastName":"N" },' +
+//     '{"firstName":"Manoj","lastName":"M" },' +
+//     '{"firstName":"Yashwanth","lastName":"N" }]}';
 
-  const data = JSON.parse(obj);
-  document.getElementById("jsondemo").innerHTML = obj;
+//   const data = JSON.parse(obj);
+//   document.getElementById("jsondemo").innerHTML = obj;
 
-  const datastore = (document.getElementById("jsondemo1").innerHTML =
-    " Firstname : " +
-    data.employees[0].firstName +
-    " ,\n Lastname : " +
-    data.employees[0].lastName +
-    "\n" +
-    " Firstname : " +
-    data.employees[1].firstName +
-    " , " +
-    " \n Lastname : " +
-    data.employees[1].lastName +
-    "\n" +
-    " Firstname : " +
-    data.employees[2].firstName +
-    " , " +
-    " \n Lastname : " +
-    data.employees[2].lastName);
-}
+//   const datastore = (document.getElementById("jsondemo1").innerHTML =
+//     " Firstname : " +
+//     data.employees[0].firstName +
+//     " ,\n Lastname : " +
+//     data.employees[0].lastName +
+//     "\n" +
+//     " Firstname : " +
+//     data.employees[1].firstName +
+//     " , " +
+//     " \n Lastname : " +
+//     data.employees[1].lastName +
+//     "\n" +
+//     " Firstname : " +
+//     data.employees[2].firstName +
+//     " , " +
+//     " \n Lastname : " +
+//     data.employees[2].lastName);
+// }
 
 //Array of Elemenet Inserting
 
@@ -188,17 +188,21 @@ function add() {
 // Open Nav Bars
 function openNav() {
   document.getElementById("mySidenav").style.width = " 250px";
+  document.getElementById("main_div").style.marginLeft = " 250px";
 }
 
 // Close Nav Bars
 function togglefun(x) {
   if (x.target.id == "left") {
-    // document.getElementById("main_form1").style.width = "250px";
     document.getElementById("mySidenav").style.width = "50px";
+    document.getElementById("main_div").style.marginLeft = "65px";
+
     x.target.className = "fa fa-angle-right";
     x.target.id = "right";
   } else {
-    document.getElementById("mySidenav").style.width = " 250px";
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main_div").style.marginLeft = "250px";
+
     x.target.id = "left";
     x.target.className = "fa fa-angle-left";
   }
@@ -206,6 +210,7 @@ function togglefun(x) {
 
 function closeNav(x) {
   document.getElementById("mySidenav").style.width = "50px";
+  document.getElementById("main_div").style.marginLeft = "65px";
   // document.getElementsByClassName("span_p").style.display = "none";
 }
 
@@ -253,23 +258,6 @@ function data_click(x) {
 
     data_details_span.addEventListener("click", (e) => {
       icon_data = item.icon;
-      if (item.icon == "fa fa-user-o") {
-        // document.getElementById("main_form").style.display = "block";
-        // document.getElementById("ranking_list").style.display = "none";
-      } else {
-        document.getElementById("main_form").style.display = "none";
-      }
-
-      if (item.icon == "fa fa-credit-card") {
-        let icon_name = item.icon;
-        console.log("clicked");
-        // document.getElementById("ranking_list").style.display = "block";
-        // document.getElementById("ranking_list").style.overflow = "hidden";
-
-        console.log(rank_data);
-      } else {
-        console.log("no Updates");
-      }
     });
 
     let second_span = document.createElement("span");
@@ -518,11 +506,6 @@ function studentdata1() {
   });
 }
 
-var loadFile1 = function (event) {
-  var image = document.getElementById("output1");
-  image.src = URL.createObjectURL(event.target.files[0]);
-};
-
 $.ajax({
   type: "get",
   url: "/public//mikonto_accout.html",
@@ -569,3 +552,9 @@ function sliderInit() {
 }
 
 sliderInit();
+
+function load1(event) {
+  var image = document.getElementById("output1");
+  image.src = URL.createObjectURL(event.target.files[0]);
+  console.log(loadFile1);
+}
